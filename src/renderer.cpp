@@ -53,6 +53,27 @@ void Renderer::Render(Snake const snake, SDL_Point const &food) {
   block.y = food.y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
 
+  // Render frame
+  SDL_SetRenderDrawColor(sdl_renderer, 0xff, 0x00, 0x00, 0xFF);
+  //Render the horizontal part of the frame
+  for (int i = 0; i <= grid_width; i++)
+  {
+    block.x = i * block.w;
+    block.y = 0 * block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+    block.y = (grid_height-1) * block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+  }
+  //Render the longitudinal part of the frame
+  for (int i = 0; i <= grid_height; i++)
+  {
+    block.x = 0 * block.w;
+    block.y = i * block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+    block.x = (grid_width - 1) * block.w;
+    SDL_RenderFillRect(sdl_renderer, &block);
+  }
+
   // Render snake's body
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
   for (SDL_Point const &point : snake.body) {
