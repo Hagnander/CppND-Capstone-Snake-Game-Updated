@@ -2,6 +2,7 @@
 #include "controller.h"
 #include "game.h"
 #include "renderer.h"
+#include "file_parser.h"
 
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
@@ -11,6 +12,9 @@ int main() {
   constexpr std::size_t kGridWidth{32};
   constexpr std::size_t kGridHeight{32};
 
+  //Open a file to get list of highscores
+  FileParser fileparser;
+  fileparser.ParseFile();
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
   Game game(kGridWidth, kGridHeight);
@@ -18,5 +22,6 @@ int main() {
   std::cout << "Game has terminated successfully!\n";
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
+  //Write to file if it is new highscore
   return 0;
 }

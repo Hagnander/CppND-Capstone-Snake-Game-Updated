@@ -1,0 +1,4 @@
+Johan 100
+Nils 34
+janne 654
+Linn 2
