@@ -2,11 +2,10 @@
 #include <string>
 #include <sstream>  
 #include <iostream>
+#include <algorithm>
 
 #include "file_parser.h"
-
-
-
+#include "player.h"
 
 using std::string;
 using std::vector;
@@ -14,6 +13,7 @@ using std::vector;
 void FileParser::ParseFile()
 {
     string Name, Score, line;
+    Player player;
     std::ifstream stream("../src/HighScore.txt");
     if (stream.is_open())
     {
@@ -22,9 +22,45 @@ void FileParser::ParseFile()
             std::istringstream linestream(line);
             while (linestream >> Name >> Score)
             {
-                _names.push_back(Name);
-                _scores.push_back(Score);
+                player.Name(Name);
+                player.Score(std::stoi(Score));
+                _list.push_back(player);
             }
         }
     }
 }
+
+ int FileParser::UpdateHighScoreList(std::string name, int score)
+ {
+    Player player;
+    player.Name(name);
+    player.Score(score);
+    if ((_list.back().Score() < score) || _list.size() <= 100)//kNumberOfEnries
+    {
+        _list.push_back(player);
+        std::sort(_list.begin(), _list.end(), Compare);
+        //Find the index with the score and return that index
+        int i = 1; //We start to count on 1 in highscore list
+        for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
+        {
+            i++;
+            if (it->Score() == score)
+                return i;
+        }
+    }
+    return 10000;//kDidNotReachList;
+ }
+ 
+  int FileParser::GetPersonalBestRank(std::string name)
+  {
+      int i = 1; //We start to count on 1 in highscore list
+        for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
+        {
+            i++;
+            if (it->Name() == name)
+                return i;
+        }
+        return 500;
+  }
+
+ ;
