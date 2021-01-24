@@ -18,7 +18,10 @@ int main() {
   fileparser.ParseFile();
   //Get name from player
   Player player;
-  player.Name("JH");
+  std::cout << "Welcome to Snake, What's your name? \n";
+  std::string name = "nobody";
+  std::cin >> name;
+  player.Name(name);
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
   Controller controller;
   Game game(kGridWidth, kGridHeight);
@@ -30,15 +33,15 @@ int main() {
   int PersonalBestRank = fileparser.GetPersonalBestRank(player.Name());
   //Inform the player about best postion in high score list
   if (Rank == PersonalBestRank)
-    std::cout << "Congratulations! " << player.Name() << " you have a new personal record and reached position = " << Rank << " on Highscore list \n";
+    std::cout << "Congratulations! " << player.Name() << " you have a new personal record and reached position = " << Rank << " on Highscore List \n";
   else if (Rank <= 100)
-    std::cout << "Congratulations! " << player.Name() << " you reached position = " << Rank << " on Highscore list \n";
+    std::cout << "Congratulations! " << player.Name() << " you reached position = " << Rank << " on Highscore List \n";
   else
-    std::cout << "You did not reach the Highscore list \n";
+    std::cout << "You did not reach the Highscore List \n";
   
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
-  //Write Top 3 on highscore list
+  fileparser.PrintTop5();
   
 
   return 0;

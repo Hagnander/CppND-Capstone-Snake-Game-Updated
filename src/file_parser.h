@@ -12,6 +12,7 @@ class FileParser{
         void ParseFile();
         int GetPersonalBestRank(std::string name);
         int UpdateHighScoreList(std::string name, int score);
+        void PrintTop5(void);
     private:
         std::vector<Player> _list;
 };

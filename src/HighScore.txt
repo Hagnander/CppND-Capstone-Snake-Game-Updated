@@ -2,3 +2,6 @@ Johan 100
 Nils 34
 janne 654
 Linn 2
+Linda 56
+Linea 24
+JH 1

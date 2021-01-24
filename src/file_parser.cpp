@@ -30,8 +30,8 @@ void FileParser::ParseFile()
     }
 }
 
- int FileParser::UpdateHighScoreList(std::string name, int score)
- {
+int FileParser::UpdateHighScoreList(std::string name, int score)
+{
     Player player;
     player.Name(name);
     player.Score(score);
@@ -40,7 +40,7 @@ void FileParser::ParseFile()
         _list.push_back(player);
         std::sort(_list.begin(), _list.end(), Compare);
         //Find the index with the score and return that index
-        int i = 1; //We start to count on 1 in highscore list
+        int i = 0; //We start to count on 1 in highscore list
         for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
         {
             i++;
@@ -49,18 +49,28 @@ void FileParser::ParseFile()
         }
     }
     return 10000;//kDidNotReachList;
- }
+}
  
-  int FileParser::GetPersonalBestRank(std::string name)
-  {
-      int i = 1; //We start to count on 1 in highscore list
-        for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
-        {
-            i++;
-            if (it->Name() == name)
-                return i;
-        }
-        return 500;
-  }
+int FileParser::GetPersonalBestRank(std::string name)
+{
+    int i = 0; 
+    for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
+    {
+        i++;//We start to count on 1 in highscore list
+        if (it->Name() == name)
+            return i;
+    }
+    return 500;
+}
 
- ;
+void FileParser::PrintTop5(void)
+{
+    int i = 0;
+    std::cout << "Highscore List Top 5 \n";
+    for (std::vector<Player>::iterator it = _list.begin() ; it < _list.begin() + 5; ++it)
+    {
+        i++;
+        std::cout << "Rank" << i <<": \t" << it->Name() << "\t" << it->Score() <<"\n";
+    }
+}
+;
