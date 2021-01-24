@@ -7,6 +7,8 @@
 
 #include "player.h"
 
+const int kMaxEntries = 100; //Max number of entries in Highscore List
+
 class FileParser{
     public:
         void ParseFile();

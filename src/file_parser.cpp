@@ -10,6 +10,8 @@
 using std::string;
 using std::vector;
 
+
+
 void FileParser::ParseFile()
 {
     string Name, Score, line;
@@ -35,7 +37,7 @@ int FileParser::UpdateHighScoreList(std::string name, int score)
     Player player;
     player.Name(name);
     player.Score(score);
-    if ((_list.back().Score() < score) || _list.size() <= 100)//kNumberOfEnries
+    if ((_list.back().Score() < score) || _list.size() <= kMaxEntries)
     {
         _list.push_back(player);
         std::sort(_list.begin(), _list.end(), Compare);
@@ -48,7 +50,7 @@ int FileParser::UpdateHighScoreList(std::string name, int score)
                 return i;
         }
     }
-    return 10000;//kDidNotReachList;
+    return kMaxEntries + 1; //Did not reach the list
 }
  
 int FileParser::GetPersonalBestRank(std::string name)
@@ -60,7 +62,7 @@ int FileParser::GetPersonalBestRank(std::string name)
         if (it->Name() == name)
             return i;
     }
-    return 500;
+    return kMaxEntries + 1; //Not in the list
 }
 
 void FileParser::PrintTop5(void)

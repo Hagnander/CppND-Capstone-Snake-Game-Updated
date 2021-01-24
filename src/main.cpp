@@ -34,7 +34,7 @@ int main() {
   //Inform the player about best postion in high score list
   if (Rank == PersonalBestRank)
     std::cout << "Congratulations! " << player.Name() << " you have a new personal record and reached position = " << Rank << " on Highscore List \n";
-  else if (Rank <= 100)
+  else if (Rank <= kMaxEntries)
     std::cout << "Congratulations! " << player.Name() << " you reached position = " << Rank << " on Highscore List \n";
   else
     std::cout << "You did not reach the Highscore List \n";
