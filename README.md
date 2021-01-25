@@ -1,12 +1,47 @@
-# CPPND: Capstone Snake Game Example
+# Snake Game
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is my Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
 <img src="snake_game.gif"/>
 
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
+## Project Structure
+### Execution
+Before starting the game loop the user is ask to enter his/her name and a High-score table is read. Objects of Player, Controller, Game and Renderer are initialized. 
+The game loop runs continuously during gameplay. Each turn of the loop, it processes user input, updates the game state, and renders the game. It tracks the passage of time to control the rate of gameplay.
+At game over the score is compared with the High-score table and the user is informed about the results. The High-score table is saved to file.
 
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+
+### Classes
+class Controller: Handles the user input.
+class FileParser: Read and write to the HighScore.txt and handles the High-score table in the game. The High-score table is a vector of the class Player.
+class Game: Handles the state in the game.
+class Player: Has the attributes _name and _score for a game session.
+class Renderer: Does the call to the SDL library for rendering.
+class Snake: Responsible for the behaviour of the snake, such as motion and growing (when eating food).
+
+### Folders/Files
+Besides .cpp files and .h files that matches the classes above and a main.cpp, there is a HighScore.txt with the High-score table. 
+
+## Addressed rubric points for the project
+The following criteria are addressed:
+### Loops, Functions, I/O
+The project demonstrates an understanding of C++ functions and control structures.
+The project reads data from a file and process the data, or the program writes data to a file.
+The project accepts user input and processes the input.
+### Object Oriented Programming
+The project uses Object Oriented Programming techniques.
+Classes use appropriate access specifiers for class members.
+Classes abstract implementation details from their interfaces.
+Classes encapsulate behavior.
+### Memory Management
+-
+### Concurrency
+-
+
+## Fix/Feature
+Fix: Corrected bug in starter project from Udacity. Food could be placed outside the grid in the game.
+Feature: The game has a High-score table and the user enter his/her name before start of game.
+Feature: There is a frame surronding the game grid and the player must keep the snake within the frame.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
