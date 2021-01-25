@@ -6,7 +6,7 @@ This is my Capstone project in the [Udacity C++ Nanodegree Program](https://www.
 
 ## Project Structure
 ### Execution
-Before starting the game loop the user is ask to enter his/her name and a High-score table is read. Objects of Player, Controller, Game and Renderer are initialized. 
+Before starting the game loop the user is asked to enter his/her name. HighScore.txt (the High-score table) is read for use after the game has ended. Objects of Player, Controller, Game and Renderer are initialized. 
 The game loop runs continuously during gameplay. Each turn of the loop, it processes user input, updates the game state, and renders the game. It tracks the passage of time to control the rate of gameplay.
 At game over the score is compared with the High-score table and the user is informed about the results. The High-score table is saved to file.
 
@@ -23,25 +23,24 @@ class Snake: Responsible for the behaviour of the snake, such as motion and grow
 Besides .cpp files and .h files that matches the classes above and a main.cpp, there is a HighScore.txt with the High-score table. 
 
 ## Addressed rubric points for the project
-The following criteria are addressed:
 ### Loops, Functions, I/O
-The project demonstrates an understanding of C++ functions and control structures.
-The project reads data from a file and process the data, or the program writes data to a file.
-The project accepts user input and processes the input.
+- The project demonstrates an understanding of C++ functions and control structures.
+- The project reads data from a file and process the data, or the program writes data to a file.
+- The project accepts user input and processes the input.
 ### Object Oriented Programming
-The project uses Object Oriented Programming techniques.
-Classes use appropriate access specifiers for class members.
-Classes abstract implementation details from their interfaces.
-Classes encapsulate behavior.
+- The project uses Object Oriented Programming techniques.
+- Classes use appropriate access specifiers for class members.
+- Classes abstract implementation details from their interfaces.
+- Classes encapsulate behavior.
 ### Memory Management
 -
 ### Concurrency
 -
 
 ## Fix/Feature
-Fix: Corrected bug in starter project from Udacity. Food could be placed outside the grid in the game.
-Feature: The game has a High-score table and the user enter his/her name before start of game.
-Feature: There is a frame surronding the game grid and the player must keep the snake within the frame.
+- Fix: Corrected bug in starter project from Udacity. Food could be placed outside the grid in the game.
+- Feature: The game has a High-score table and the user enter his/her name before start of game.
+- Feature: There is a frame surronding the game grid and the player must keep the snake within the frame.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
