@@ -74,13 +74,11 @@ void Game::Update() {
   int new_y = static_cast<int>(snake.head_y);
   //Check boundaries
   //If snake head  hit the frame, the game ends
-  if ((new_x == 640 - 1) || (new_x == 0) || (new_y == 640 - 1) || (new_y == 0)){
+  if ((new_x == 32 - 1) || (new_x == 0) || (new_y == 32 - 1) || (new_y == 0)){
     snake.alive = false;
     return;
   }
   
-  //JHÄ  Remove the code that makes the snake appear on the other side
-
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
     score++;
