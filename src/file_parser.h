@@ -11,10 +11,11 @@ const int kMaxEntries = 100; //Max number of entries in Highscore List
 
 class FileParser{
     public:
-        void ParseFile();
+        void ParseFile(void);
         int GetPersonalBestRank(std::string name);
         int UpdateHighScoreList(std::string name, int score);
         void PrintTop5(void);
+        void WriteFile(void);
     private:
         std::vector<Player> _list;
 };

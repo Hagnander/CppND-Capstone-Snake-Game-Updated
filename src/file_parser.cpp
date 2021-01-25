@@ -3,6 +3,7 @@
 #include <sstream>  
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 #include "file_parser.h"
 #include "player.h"
@@ -12,7 +13,7 @@ using std::vector;
 
 
 
-void FileParser::ParseFile()
+void FileParser::ParseFile(void)
 {
     string Name, Score, line;
     Player player;
@@ -75,4 +76,16 @@ void FileParser::PrintTop5(void)
         std::cout << "Rank" << i <<": \t" << it->Name() << "\t" << it->Score() <<"\n";
     }
 }
+void FileParser::WriteFile(void)
+{
+    std::cout << "Writing to file \n";
+    std::ofstream file;
+    file.open ("../src/HighScore.txt");
+    for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
+    {
+        file << it->Name() << " " << it->Score() << "\n";
+    }
+    file.close();
+}
 ;
+

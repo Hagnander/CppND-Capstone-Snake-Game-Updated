@@ -30,6 +30,7 @@ int main() {
   //Update High Score list and return rank (save 100 values in high score list)
   int Rank = fileparser.UpdateHighScoreList(player.Name(),game.GetScore());
   //Write to file
+  fileparser.WriteFile();
   int PersonalBestRank = fileparser.GetPersonalBestRank(player.Name());
   //Inform the player about best postion in high score list
   if (Rank == PersonalBestRank)
