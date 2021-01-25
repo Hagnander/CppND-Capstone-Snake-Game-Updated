@@ -3,9 +3,8 @@
 
 #include <string>
 
-
-
-class Player{
+class Player
+{
     public:
         void Name(std::string name);
         std::string Name() {return _name;}

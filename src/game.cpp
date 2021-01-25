@@ -5,9 +5,11 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
-      random_w(1, static_cast<int>(grid_width -2)),
+      random_w(1, static_cast<int>(grid_width -2)), //The food must be within the frame
       random_h(1, static_cast<int>(grid_height -2)) {
   PlaceFood();
+  _grid_height = grid_height;
+  _grid_width = grid_width;
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -74,7 +76,7 @@ void Game::Update() {
   int new_y = static_cast<int>(snake.head_y);
   //Check boundaries
   //If snake head  hit the frame, the game ends
-  if ((new_x == 32 - 1) || (new_x == 0) || (new_y == 32 - 1) || (new_y == 0)){
+  if ((new_x == _grid_width - 1) || (new_x == 0) || (new_y == _grid_height - 1) || (new_y == 0)){
     snake.alive = false;
     return;
   }

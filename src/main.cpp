@@ -34,16 +34,15 @@ int main() {
   int PersonalBestRank = fileparser.GetPersonalBestRank(player.Name());
   //Inform the player about best postion in high score list
   if (Rank == PersonalBestRank)
-    std::cout << "Congratulations! " << player.Name() << " you have a new personal record and reached position = " << Rank << " on Highscore List \n";
+    std::cout << "Congrats " << player.Name() << "! you set a new personal record and reached pos = " << Rank << " on High-score Table \n";
   else if (Rank <= kMaxEntries)
-    std::cout << "Congratulations! " << player.Name() << " you reached position = " << Rank << " on Highscore List \n";
+    std::cout << "Congrats " << player.Name() << "! you reached pos = " << Rank << " on High-score Table \n";
   else
-    std::cout << "You did not reach the Highscore List \n";
+    std::cout << "You did not reach the High-score Table \n";
   
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
   fileparser.PrintTop5();
-  
 
   return 0;
 }

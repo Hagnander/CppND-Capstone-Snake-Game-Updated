@@ -11,8 +11,6 @@
 using std::string;
 using std::vector;
 
-
-
 void FileParser::ParseFile(void)
 {
     string Name, Score, line;
@@ -43,10 +41,10 @@ int FileParser::UpdateHighScoreList(std::string name, int score)
         _list.push_back(player);
         std::sort(_list.begin(), _list.end(), Compare);
         //Find the index with the score and return that index
-        int i = 0; //We start to count on 1 in highscore list
+        int i = 0; 
         for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)
         {
-            i++;
+            i++;//We start to count on 1 in highscore list
             if (it->Score() == score)
                 return i;
         }
@@ -78,7 +76,6 @@ void FileParser::PrintTop5(void)
 }
 void FileParser::WriteFile(void)
 {
-    std::cout << "Writing to file \n";
     std::ofstream file;
     file.open ("../src/HighScore.txt");
     for (std::vector<Player>::iterator it = _list.begin() ; it != _list.end(); ++it)

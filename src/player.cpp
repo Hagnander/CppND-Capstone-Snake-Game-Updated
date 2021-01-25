@@ -3,7 +3,6 @@
 
 #include "player.h"
 
-
 using std::string;
 
 void Player::Name(std::string name)

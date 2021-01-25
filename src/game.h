@@ -18,6 +18,8 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
+  std::size_t _grid_height;
+  std::size_t _grid_width;
 
   std::random_device dev;
   std::mt19937 engine;
