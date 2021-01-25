@@ -12,12 +12,12 @@ At game over the score is compared with the High-score table and the user is inf
 
 
 ### Classes
-class Controller: Handles the user input.
-class FileParser: Read and write to the HighScore.txt and handles the High-score table in the game. The High-score table is a vector of the class Player.
-class Game: Handles the state in the game.
-class Player: Has the attributes _name and _score for a game session.
-class Renderer: Does the call to the SDL library for rendering.
-class Snake: Responsible for the behaviour of the snake, such as motion and growing (when eating food).
+- class Controller: Handles the user input.
+- class FileParser: Read and write to the HighScore.txt and handles the High-score table in the game. The High-score table is a vector of the class Player.
+- class Game: Handles the state in the game.
+- class Player: Has the attributes _name and _score for a game session.
+- class Renderer: Does the call to the SDL library for rendering.
+- class Snake: Responsible for the behaviour of the snake, such as motion and growing (when eating food).
 
 ### Folders/Files
 Besides .cpp files and .h files that matches the classes above and a main.cpp, there is a HighScore.txt with the High-score table. 
