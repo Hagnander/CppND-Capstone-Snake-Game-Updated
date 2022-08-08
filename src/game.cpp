@@ -4,6 +4,7 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
+      snake2(grid_width, grid_height),
       engine(dev()),
       random_w(1, static_cast<int>(grid_width -2)), //The food must be within the frame
       random_h(1, static_cast<int>(grid_height -2)) {
@@ -25,9 +26,11 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, snake);
+    
+    controller.HandleSnake2Input(running, snake2);
+    controller.HandleSnakeInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, snake2, food);
 
     frame_end = SDL_GetTicks();
 
@@ -71,6 +74,8 @@ void Game::Update() {
   if (!snake.alive) return;
 
   snake.Update();
+  snake2.Update();
+
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);
@@ -87,7 +92,24 @@ void Game::Update() {
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    //snake.speed += 0.02;
+  }
+  new_x = static_cast<int>(snake2.head_x);
+  new_y = static_cast<int>(snake2.head_y);
+  //Check boundaries
+  //If snake head  hit the frame, the game ends
+  if ((new_x == _grid_width - 1) || (new_x == 0) || (new_y == _grid_height - 1) || (new_y == 0)){
+    snake.alive = false;
+    return;
+  }
+  
+  // Check if there's food over here
+  if (food.x == new_x && food.y == new_y) {
+    score++;
+    PlaceFood();
+    // Grow snake and increase speed.
+    snake2.GrowBody();
+    snake2.speed += 0.02;
   }
 }
 

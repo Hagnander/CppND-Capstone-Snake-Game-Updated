@@ -17,6 +17,7 @@ class Game {
 
  private:
   Snake snake;
+  Snake snake2;
   SDL_Point food;
   std::size_t _grid_height;
   std::size_t _grid_width;
