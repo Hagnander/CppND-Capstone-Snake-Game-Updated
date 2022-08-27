@@ -27,8 +27,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     
-    controller.HandleSnake2Input(running, snake2);
-    controller.HandleSnakeInput(running, snake);
+    //controller.HandleSnake2Input(running, snake2);
+    controller.HandleSnakeInput(running, snake, snake2);
     Update();
     renderer.Render(snake, snake2, food);
 
