@@ -92,7 +92,7 @@ void Game::Update() {
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
-    //snake.speed += 0.02;
+    // JH snake.speed += 0.02;
   }
   new_x = static_cast<int>(snake2.head_x);
   new_y = static_cast<int>(snake2.head_y);
@@ -109,7 +109,7 @@ void Game::Update() {
     PlaceFood();
     // Grow snake and increase speed.
     snake2.GrowBody();
-    snake2.speed += 0.02;
+    // JH snake2.speed += 0.02;
   }
 }
 
