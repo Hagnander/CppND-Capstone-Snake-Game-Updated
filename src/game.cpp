@@ -3,8 +3,8 @@
 #include "SDL.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : snake(grid_width, grid_height),
-      snake2(grid_width, grid_height),
+    : snake(grid_width, grid_height, 1),
+      snake2(grid_width, grid_height, -1),
       engine(dev()),
       random_w(1, static_cast<int>(grid_width -2)), //The food must be within the frame
       random_h(1, static_cast<int>(grid_height -2)) {
@@ -94,22 +94,29 @@ void Game::Update() {
     snake.GrowBody();
     // JH snake.speed += 0.02;
   }
-  new_x = static_cast<int>(snake2.head_x);
-  new_y = static_cast<int>(snake2.head_y);
+  int new2_x = static_cast<int>(snake2.head_x);
+  int new2_y = static_cast<int>(snake2.head_y);
   //Check boundaries
   //If snake head  hit the frame, the game ends
-  if ((new_x == _grid_width - 1) || (new_x == 0) || (new_y == _grid_height - 1) || (new_y == 0)){
+  if ((new2_x == _grid_width - 1) || (new2_x == 0) || (new2_y == _grid_height - 1) || (new2_y == 0)){
     snake.alive = false;
     return;
   }
   
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
+  if (food.x == new2_x && food.y == new2_y) {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
     snake2.GrowBody();
     // JH snake2.speed += 0.02;
+  }
+  
+  //Check if we have a collision between the snakes
+  if (new_x == new2_x && new_y == new2_y) {
+    score=score+100;
+    snake.alive = false;
+    return;
   }
 }
 
