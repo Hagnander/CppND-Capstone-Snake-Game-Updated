@@ -35,7 +35,7 @@ int main() {
     game.Run(controller, renderer, kMsPerFrame);
     std::cout << "Game has terminated successfully!\n";
     //Update High Score list and return rank (save 100 values in high score list)
-    int Rank = fileparser.UpdateHighScoreList(player1.Name(),game.GetScore());
+    int Rank = fileparser.UpdateHighScoreList(player1.Name(),game.GetScore1());
     //Write to file
     fileparser.WriteFile();
     int PersonalBestRank = fileparser.GetPersonalBestRank(player1.Name());
@@ -47,7 +47,7 @@ int main() {
     else
       std::cout << "You did not reach the High-score Table \n";
   
-    std::cout << "Score: " << game.GetScore() << "\n";
+    std::cout << "Score: " << game.GetScore1() << "\n";
     std::cout << "Size: " << game.GetSize() << "\n";
     fileparser.PrintTop5();
     std::string PlayAgain;
