@@ -35,20 +35,33 @@ int main() {
     game.Run(controller, renderer, kMsPerFrame);
     std::cout << "Game has terminated successfully!\n";
     //Update High Score list and return rank (save 100 values in high score list)
-    int Rank = fileparser.UpdateHighScoreList(player1.Name(),game.GetScore1());
+    int RankPlayer1 = fileparser.UpdateHighScoreList(player1.Name(),game.GetScore1());
+    int RankPlayer2 = fileparser.UpdateHighScoreList(player2.Name(),game.GetScore2());
     //Write to file
     fileparser.WriteFile();
     int PersonalBestRank = fileparser.GetPersonalBestRank(player1.Name());
     //Inform the player about best postion in high score list
-    if (Rank == PersonalBestRank)
-      std::cout << "Congrats " << player1.Name() << "! you set a new personal record and reached pos = " << Rank << " on High-score Table \n";
-    else if (Rank <= kMaxEntries)
-      std::cout << "Congrats " << player1.Name() << "! you reached pos = " << Rank << " on High-score Table \n";
+    if (RankPlayer1 == PersonalBestRank)
+      std::cout << "Congrats " << player1.Name() << "! you set a new personal record and reached pos = " << RankPlayer1 << " on High-score Table \n";
+    else if (RankPlayer1 <= kMaxEntries)
+      std::cout << "Congrats " << player1.Name() << "! you reached pos = " << RankPlayer1 << " on High-score Table \n";
     else
-      std::cout << "You did not reach the High-score Table \n";
+      std::cout << player1.Name() << " did not reach the High-score Table \n";
+
+    PersonalBestRank = fileparser.GetPersonalBestRank(player2.Name());
+    //Inform the player about best postion in high score list
+    if (RankPlayer2 == PersonalBestRank)
+      std::cout << "Congrats " << player2.Name() << "! you set a new personal record and reached pos = " << RankPlayer2 << " on High-score Table \n";
+    else if (RankPlayer2 <= kMaxEntries)
+      std::cout << "Congrats " << player2.Name() << "! you reached pos = " << RankPlayer2 << " on High-score Table \n";
+    else
+      std::cout << player2.Name() << " did not reach the High-score Table \n";
+    
   
-    std::cout << "Score: " << game.GetScore1() << "\n";
-    std::cout << "Size: " << game.GetSize() << "\n";
+    std::cout << player1.Name() << " Score: " << game.GetScore1() << "\n";
+    std::cout << player1.Name() << " Size: " << game.GetSize() << "\n";
+    std::cout << player2.Name() << " Score: " << game.GetScore2() << "\n";
+    std::cout << player2.Name() << " Size: " << game.GetSize() << "\n";
     fileparser.PrintTop5();
     std::string PlayAgain;
     std::cout << "If you want to play again type y and hit enter \n";
