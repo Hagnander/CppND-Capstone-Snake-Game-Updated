@@ -110,7 +110,8 @@ void Renderer::Render(Snake const snake, Snake const snake2, SDL_Point const &fo
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps) {
-  std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+void Renderer::UpdateWindowTitle(int score1, int score2, int fps) {
+  //JH Need to show score for two players, also show name of player instead of Snake Score
+  std::string title{"Player 1 Score: " + std::to_string(score1) + " Player 2 Score: " + std::to_string(score2) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
