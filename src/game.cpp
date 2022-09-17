@@ -127,7 +127,7 @@ void Game::Update() {
   if (new_x == new2_x && new_y == new2_y) {
     score1=score1+100;
     snake.alive = false;
-     snake2.alive = false;
+    snake2.alive = false;
     return;
   }
 }
