@@ -15,6 +15,7 @@ class Game {
   int GetScore1() const;
   int GetScore2() const;
   int GetSize() const;
+  int GetSize2() const;
 
  private:
   Snake snake;

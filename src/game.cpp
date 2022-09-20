@@ -81,9 +81,7 @@ void Game::Update() {
   if (snake.alive)
   {
      snake.Update();
-     //snake2.Update();
-
-
+     
      new_x = static_cast<int>(snake.head_x);
      new_y = static_cast<int>(snake.head_y);
      //Check boundaries
@@ -99,7 +97,7 @@ void Game::Update() {
         PlaceFood();
         // Grow snake and increase speed.
         snake.GrowBody();
-        // JH snake.speed += 0.02;
+        snake.speed += 0.02;
      }
   }
   if (snake2.alive)
@@ -120,10 +118,10 @@ void Game::Update() {
          PlaceFood();
          // Grow snake and increase speed.
          snake2.GrowBody();
-         // JH snake2.speed += 0.02;
+         snake2.speed += 0.02;
       }
   }
-  //Check if we have a collision between the snakes
+  //Check if we have a head to head collision between the snakes
   if (new_x == new2_x && new_y == new2_y) {
     score1=score1+100;
     snake.alive = false;
@@ -135,3 +133,4 @@ void Game::Update() {
 int Game::GetScore1() const { return score1; }
 int Game::GetScore2() const { return score2; }
 int Game::GetSize() const { return snake.size; }
+int Game::GetSize2() const { return snake2.size; }

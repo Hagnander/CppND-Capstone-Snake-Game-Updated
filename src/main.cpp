@@ -61,7 +61,7 @@ int main() {
     std::cout << player1.Name() << " Score: " << game.GetScore1() << "\n";
     std::cout << player1.Name() << " Size: " << game.GetSize() << "\n";
     std::cout << player2.Name() << " Score: " << game.GetScore2() << "\n";
-    std::cout << player2.Name() << " Size: " << game.GetSize() << "\n";
+    std::cout << player2.Name() << " Size: " << game.GetSize2() << "\n";
     fileparser.PrintTop5();
     std::string PlayAgain;
     std::cout << "If you want to play again type y and hit enter \n";
