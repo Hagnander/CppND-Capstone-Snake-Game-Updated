@@ -9,6 +9,7 @@ class Controller
         void HandleSnakeInput(bool &running, Snake &snake, Snake &snake2) const;
 
     private:
+        void Fire() const ;
         void ChangeDirection(Snake &snake, Snake::Direction input,
                        Snake::Direction opposite) const;
 };

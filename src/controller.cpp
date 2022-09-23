@@ -9,6 +9,13 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
   return;
 }
 
+void Controller::Fire() const {
+  //If snake does not have an active shot, create one
+  
+  // If there is shot active, do not do anything
+}  
+
+
 void Controller::HandleSnakeInput(bool &running, Snake &snake, Snake &snake2) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
@@ -48,6 +55,9 @@ void Controller::HandleSnakeInput(bool &running, Snake &snake, Snake &snake2) co
           ChangeDirection(snake2, Snake::Direction::kRight,
                           Snake::Direction::kLeft);
           break;  
+        case SDLK_SPACE:
+          Fire();
+          break;    
       }
     }
   }
