@@ -53,6 +53,12 @@ void Renderer::Render(Snake const snake, Snake const snake2, SDL_Point const &fo
   block.y = food.y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
 
+  // Render bullet1
+  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x18, 0x00, 0xFF);
+  block.x = food.x +2* block.w;
+  block.y = food.y +2* block.h;
+  SDL_RenderFillRect(sdl_renderer, &block);
+
   // Render frame
   SDL_SetRenderDrawColor(sdl_renderer, 0xff, 0x00, 0x00, 0xFF);
   //Render the horizontal part of the frame

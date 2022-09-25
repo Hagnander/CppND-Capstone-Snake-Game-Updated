@@ -28,7 +28,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     
     //controller.HandleSnake2Input(running, snake2);
-    controller.HandleSnakeInput(running, snake, snake2);
+    controller.HandleSnakeInput(running, snake, snake2, bullet1, bullet2);
     Update();
     renderer.Render(snake, snake2, food);
 
@@ -121,6 +121,16 @@ void Game::Update() {
          snake2.speed += 0.02;
       }
   }
+  // JH gör om så att du har en vector med bullets och iterera 
+  // Update the position of the bullet
+  if (snake.shotActive) {
+    bullet1.Update();
+  }
+  if (snake2.shotActive) {
+    bullet2.Update();
+  }
+
+  //Check if any snake is shot 
   //Check if we have a head to head collision between the snakes
   if (new_x == new2_x && new_y == new2_y) {
     score1=score1+100;

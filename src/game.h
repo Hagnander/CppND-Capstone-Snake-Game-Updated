@@ -6,6 +6,7 @@
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include "shot.h"
 
 class Game {
  public:
@@ -21,6 +22,8 @@ class Game {
   Snake snake;
   Snake snake2;
   SDL_Point food;
+  Shot bullet1;
+  Shot bullet2;
   std::size_t _grid_height;
   std::size_t _grid_width;
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include "SDL.h"
 #include "snake.h"
+#include "shot.h"
+
 
 void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
                                  Snake::Direction opposite) const {
@@ -9,14 +11,21 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
   return;
 }
 
-void Controller::Fire() const {
+void Controller::Fire(Snake &snake, Shot &bullet) const {
   //If snake does not have an active shot, create one
-  
-  // If there is shot active, do not do anything
+  if (snake.shotActive==false) {
+    //Set start position and direction of the bullet
+    bullet.pos_x = snake.head_x;
+    bullet.pos_y = snake.head_y;
+    //bullet.direction = snake.direction;
+    snake.shotActive = true;
+  } 
+  //Check if the bullet has reach the end of the frame and set snake.shotActive=false
 }  
 
 
-void Controller::HandleSnakeInput(bool &running, Snake &snake, Snake &snake2) const {
+void Controller::HandleSnakeInput(bool &running, Snake &snake, Snake &snake2, Shot &bullet1,
+  Shot &bullet2) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
@@ -56,7 +65,7 @@ void Controller::HandleSnakeInput(bool &running, Snake &snake, Snake &snake2) co
                           Snake::Direction::kLeft);
           break;  
         case SDLK_SPACE:
-          Fire();
+          Fire(snake, bullet1);
           break;    
       }
     }
