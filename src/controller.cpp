@@ -17,7 +17,7 @@ void Controller::Fire(Snake &snake, Shot &bullet) const {
     //Set start position and direction of the bullet
     bullet.pos_x = snake.head_x;
     bullet.pos_y = snake.head_y;
-    //bullet.direction = snake.direction;
+    bullet.direction = snake.direction;
     snake.shotActive = true;
   } 
   //Check if the bullet has reach the end of the frame and set snake.shotActive=false
