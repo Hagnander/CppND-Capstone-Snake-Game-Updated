@@ -21,6 +21,11 @@ void Controller::Fire(Snake &snake, Shot &bullet) const {
     snake.shotActive = true;
   } 
   //Check if the bullet has reach the end of the frame and set snake.shotActive=false
+  else if (snake.shotActive == true) {
+    if (bullet.pos_x == 100 or bullet.pos_y == 100)  {
+      snake.shotActive = false;  
+    }
+  }  
 }  
 
 

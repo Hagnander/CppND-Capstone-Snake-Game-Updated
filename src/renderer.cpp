@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Snake const snake, Snake const snake2, SDL_Point const &food) {
+void Renderer::Render(Snake const snake, Snake const snake2, Shot const bullet, SDL_Point const &food) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -54,10 +54,20 @@ void Renderer::Render(Snake const snake, Snake const snake2, SDL_Point const &fo
   SDL_RenderFillRect(sdl_renderer, &block);
 
   // Render bullet1
-  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x18, 0x00, 0xFF);
-  block.x = food.x +2* block.w;
-  block.y = food.y +2* block.h;
-  SDL_RenderFillRect(sdl_renderer, &block);
+  if (snake.shotActive == true){
+    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x18, 0x00, 0xFF);
+    block.x = food.x +2* block.w;
+    block.y = food.y +2* block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+  }
+
+  if (snake2.shotActive == true){
+    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x18, 0x00, 0xFF);
+    block.x = food.x -2* block.w;
+    block.y = food.y -2* block.h;
+    SDL_RenderFillRect(sdl_renderer, &block);
+  }
+  
 
   // Render frame
   SDL_SetRenderDrawColor(sdl_renderer, 0xff, 0x00, 0x00, 0xFF);
