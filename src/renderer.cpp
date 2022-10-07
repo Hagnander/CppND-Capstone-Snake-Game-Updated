@@ -55,9 +55,9 @@ void Renderer::Render(Snake const snake, Snake const snake2, Shot const bullet, 
 
   // Render bullet1
   if (snake.shotActive == true){
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x18, 0x00, 0xFF);
-    block.x = food.x +2* block.w;
-    block.y = food.y +2* block.h;
+    SDL_SetRenderDrawColor(sdl_renderer, 0x3F, 0x18, 0x00, 0xFF);
+    block.x = bullet.pos_x* block.w;
+    block.y = bullet.pos_y* block.h;
     SDL_RenderFillRect(sdl_renderer, &block);
   }
 
