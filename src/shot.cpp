@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-//Make speed of bullet dependent on snake speed
+//JH Make speed of bullet dependent on snake speed
 void Shot::Update() {
   switch (direction) {
     case Snake::Direction::kUp:

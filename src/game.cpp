@@ -41,7 +41,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score1, score2, frame_count);
+      //JH renderer.UpdateWindowTitle(score1, score2, frame_count);
+      renderer.UpdateWindowTitle(snake.head_x, snake.head_y, frame_count);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -133,7 +134,6 @@ void Game::Update() {
   //Check if any snake is shot 
   //Check if we have a head to head collision between the snakes
   if (new_x == new2_x && new_y == new2_y) {
-    score1=score1+100;
     snake.alive = false;
     snake2.alive = false;
     return;
