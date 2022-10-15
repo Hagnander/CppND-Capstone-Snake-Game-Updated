@@ -126,9 +126,17 @@ void Game::Update() {
   // Update the position of the bullet
   if (snake.shotActive) {
     bullet1.Update();
+    //Check if the bullet has reach the end of the frame and set snake.shotActive=false
+    if (bullet1.pos_x <= 0 || bullet1.pos_x >= _grid_width - 1 || bullet1.pos_y >= _grid_height - 1 || bullet1.pos_y <= 0)  {
+      snake.shotActive = false;  
+    }
   }
   if (snake2.shotActive) {
     bullet2.Update();
+    //Check if the bullet has reach the end of the frame and set snake.shotActive=false
+    if (bullet2.pos_x <= 0 || bullet2.pos_x >= _grid_width - 1 || bullet2.pos_y >= _grid_height - 1 || bullet2.pos_y <= 0)  {
+      snake2.shotActive = false;  
+    }
   }
 
   //Check if any snake is shot 
