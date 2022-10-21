@@ -30,7 +30,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     //controller.HandleSnake2Input(running, snake2);
     controller.HandleSnakeInput(running, snake, snake2, bullet1, bullet2);
     Update();
-    renderer.Render(snake, snake2, bullet1, food);
+    renderer.Render(snake, snake2, bullet1, bullet2, food);
 
     frame_end = SDL_GetTicks();
 

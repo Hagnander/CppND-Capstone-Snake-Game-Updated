@@ -63,9 +63,12 @@ void Controller::HandleSnakeInput(bool &running, Snake &snake, Snake &snake2, Sh
           ChangeDirection(snake2, Snake::Direction::kRight,
                           Snake::Direction::kLeft);
           break;  
-        case SDLK_SPACE:
+        case SDLK_RCTRL:
           Fire(snake, bullet1);
-          break;    
+          break;  
+        case SDLK_q:
+          Fire(snake2, bullet2);
+          break; 
       }
     }
   }
