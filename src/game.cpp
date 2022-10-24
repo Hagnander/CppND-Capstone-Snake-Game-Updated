@@ -139,24 +139,19 @@ void Game::Update() {
     }
   }
 
-  
+  int bullet1_x = static_cast<int>(bullet1.pos_x);
+  int bullet1_y = static_cast<int>(bullet1.pos_y);
+  int bullet2_x = static_cast<int>(bullet2.pos_x);
+  int bullet2_y = static_cast<int>(bullet2.pos_y);
   //Check if snake1 is shot 
-  if (new_x == bullet1.pos_x /*&& new_y == bullet1.pos_y*/) {
-    snake.alive = false;
-    snake.shotActive = false;
-  }
-  if (new_x == bullet2.pos_x /*&& new_y == bullet2.pos_y*/) {
+  if (new_x == bullet2_x && new_y == bullet2_y) {
     snake.alive = false;
     snake2.shotActive = false;
   }
   //Check if snake2 is shot 
-  if (new2_x == bullet1.pos_x /*&& new2_y == bullet1.pos_y*/) {
+  if (new2_x == bullet1_x && new2_y == bullet1_y) {
     snake2.alive = false;
     snake.shotActive = false;
-  }
-  if (new2_x == bullet2.pos_x /*&& new2_y == bullet2.pos_y*/) {
-    snake2.alive = false;
-    snake2.shotActive = false;
   }
 
   //Check if we have a head to head collision between the snakes
